@@ -5,6 +5,17 @@
  */
 package lab.pkg7_davidbendeck;
 
+import Usuarios.Admin;
+import Usuarios.Artista;
+import Usuarios.Fan;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 /**
  *
  * @author davidbendeck
@@ -27,21 +38,181 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        D_LogIn = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        PF_Password_LogIn = new javax.swing.JPasswordField();
+        B_LogIn_LogIn = new javax.swing.JButton();
+        TF_Nickname_LogIn = new javax.swing.JTextField();
+        CB_Usuario_LogIn = new javax.swing.JComboBox<>();
+        D_MenuAdmin = new javax.swing.JDialog();
+        D_MenuArtista = new javax.swing.JDialog();
+        D_MenuFan = new javax.swing.JDialog();
+        jPanel1 = new javax.swing.JPanel();
+        B_LogIn = new javax.swing.JButton();
+        B_Registrarse = new javax.swing.JButton();
+        B_Salir = new javax.swing.JButton();
+
+        jLabel1.setText("Nickname");
+
+        jLabel2.setText("Password");
+
+        B_LogIn_LogIn.setText("Log In");
+
+        CB_Usuario_LogIn.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Artista", "Fan", " " }));
+
+        javax.swing.GroupLayout D_LogInLayout = new javax.swing.GroupLayout(D_LogIn.getContentPane());
+        D_LogIn.getContentPane().setLayout(D_LogInLayout);
+        D_LogInLayout.setHorizontalGroup(
+            D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(D_LogInLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addGroup(D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(97, 97, 97)
+                .addGroup(D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PF_Password_LogIn)
+                    .addComponent(TF_Nickname_LogIn, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                .addGap(55, 55, 55)
+                .addComponent(CB_Usuario_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
+            .addGroup(D_LogInLayout.createSequentialGroup()
+                .addGap(256, 256, 256)
+                .addComponent(B_LogIn_LogIn)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        D_LogInLayout.setVerticalGroup(
+            D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(D_LogInLayout.createSequentialGroup()
+                .addGap(185, 185, 185)
+                .addGroup(D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(TF_Nickname_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CB_Usuario_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(D_LogInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(PF_Password_LogIn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
+                .addComponent(B_LogIn_LogIn)
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout D_MenuAdminLayout = new javax.swing.GroupLayout(D_MenuAdmin.getContentPane());
+        D_MenuAdmin.getContentPane().setLayout(D_MenuAdminLayout);
+        D_MenuAdminLayout.setHorizontalGroup(
+            D_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        D_MenuAdminLayout.setVerticalGroup(
+            D_MenuAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout D_MenuArtistaLayout = new javax.swing.GroupLayout(D_MenuArtista.getContentPane());
+        D_MenuArtista.getContentPane().setLayout(D_MenuArtistaLayout);
+        D_MenuArtistaLayout.setHorizontalGroup(
+            D_MenuArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        D_MenuArtistaLayout.setVerticalGroup(
+            D_MenuArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout D_MenuFanLayout = new javax.swing.GroupLayout(D_MenuFan.getContentPane());
+        D_MenuFan.getContentPane().setLayout(D_MenuFanLayout);
+        D_MenuFanLayout.setHorizontalGroup(
+            D_MenuFanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        D_MenuFanLayout.setVerticalGroup(
+            D_MenuFanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        B_LogIn.setText("Log In");
+        B_LogIn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_LogInMouseClicked(evt);
+            }
+        });
+
+        B_Registrarse.setText("Registrarse (Fan)");
+
+        B_Salir.setText("Salir");
+        B_Salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_SalirMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(291, 291, 291)
+                        .addComponent(B_LogIn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(298, 298, 298)
+                        .addComponent(B_Salir)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 261, Short.MAX_VALUE)
+                .addComponent(B_Registrarse)
+                .addGap(259, 259, 259))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(B_LogIn)
+                .addGap(66, 66, 66)
+                .addComponent(B_Registrarse)
+                .addGap(61, 61, 61)
+                .addComponent(B_Salir)
+                .addContainerGap(135, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void B_SalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_SalirMouseClicked
+        // TODO add your handling code here:
+        
+        System.exit(0);
+    }//GEN-LAST:event_B_SalirMouseClicked
+
+    private void B_LogInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_LogInMouseClicked
+        // TODO add your handling code here:
+        
+        D_LogIn.pack();
+        D_LogIn.setModal(true);
+        D_LogIn.setVisible(true);
+    }//GEN-LAST:event_B_LogInMouseClicked
 
     /**
      * @param args the command line arguments
@@ -79,5 +250,99 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_LogIn;
+    private javax.swing.JButton B_LogIn_LogIn;
+    private javax.swing.JButton B_Registrarse;
+    private javax.swing.JButton B_Salir;
+    private javax.swing.JComboBox<String> CB_Usuario_LogIn;
+    private javax.swing.JDialog D_LogIn;
+    private javax.swing.JDialog D_MenuAdmin;
+    private javax.swing.JDialog D_MenuArtista;
+    private javax.swing.JDialog D_MenuFan;
+    private javax.swing.JPasswordField PF_Password_LogIn;
+    private javax.swing.JTextField TF_Nickname_LogIn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+    
+    //Usuarios
+    Admin Leo = new Admin("leobanegas","99", "Leonardo Banegas");
+    
+    Artista artistaActual;
+    Fan fanActual;
+    
+    //Listas de Usuarios
+    ArrayList<Artista> artirtas = new ArrayList<>();
+    ArrayList<Fan> fans = new ArrayList<>();
+    
+    //Metodos de guardado
+    
+    public static int guardarArtistas(ArrayList<Artista> artistas) {
+        int count = 0;
+        try (
+                FileOutputStream f = new FileOutputStream("Artistas");
+                ObjectOutput o = new ObjectOutputStream(f);) {
+            for (Artista artista : artistas) {
+                o.writeObject(artista);
+                count++;
+            }
+        } catch (IOException ex) { 
+            System.out.println(ex);
+        }
+        return count;
+    }
+    
+    public static int leerArtistas(ArrayList<Artista> artistas) {
+        int count = 0;
+        try (
+                FileInputStream fi = new FileInputStream("Artistas");
+                ObjectInputStream oi = new ObjectInputStream(fi);) {
+            while (true) {
+                artistas.add((Artista) oi.readObject());
+                count++;
+                System.out.println(count);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        System.out.println("Registros leidos" + count);
+        return count;
+    }
+    
+    public static int guardarFans(ArrayList<Fan> fans) {
+        int count = 0;
+        try (
+                FileOutputStream f = new FileOutputStream("Fans");
+                ObjectOutput o = new ObjectOutputStream(f);) {
+            for (Fan fan : fans) {
+                o.writeObject(fan);
+                count++;
+            }
+        } catch (IOException ex) { 
+            System.out.println(ex);
+        }
+        return count;
+    }
+    
+    public static int leerFans(ArrayList<Fan> fans) {
+        int count = 0;
+        try (
+                FileInputStream fi = new FileInputStream("Fans");
+                ObjectInputStream oi = new ObjectInputStream(fi);) {
+            while (true) {
+                fans.add((Fan) oi.readObject());
+                count++;
+                System.out.println(count);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        System.out.println("Registros leidos" + count);
+        return count;
+    }
 }
