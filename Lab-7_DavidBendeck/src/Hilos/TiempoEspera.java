@@ -5,6 +5,7 @@
  */
 package Hilos;
 
+import javax.swing.JDialog;
 import javax.swing.JProgressBar;
 
 /**
@@ -13,14 +14,16 @@ import javax.swing.JProgressBar;
  */
 public class TiempoEspera extends Thread {
     
- private JProgressBar barra;
+    private JProgressBar barra;
+    private JDialog dialog;
     private boolean avanzar;
     private boolean vive;
     private int tiempo;
     
-    public TiempoEspera(JProgressBar barra, int tiempo) {
+    public TiempoEspera(JProgressBar barra,JDialog dialog, int tiempo) {
         this.barra = barra;
         barra.setMaximum(tiempo);
+        this.dialog = dialog;
         this.tiempo = tiempo;
         avanzar = true;
         vive = true;
@@ -52,7 +55,7 @@ public class TiempoEspera extends Thread {
     
     @Override
     public void run() {
-        
+        barra.setValue(0);
         while(vive) {
             if (avanzar) {
                 barra.setValue(barra.getValue() + 1);
@@ -68,6 +71,7 @@ public class TiempoEspera extends Thread {
                 }
             }
         }
+        dialog.setVisible(false);
     }
     
 }

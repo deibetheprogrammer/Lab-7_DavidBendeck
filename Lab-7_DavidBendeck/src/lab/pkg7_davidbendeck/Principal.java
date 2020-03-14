@@ -8,7 +8,9 @@ package lab.pkg7_davidbendeck;
 import Hilos.TiempoEspera;
 import Usuarios.Admin;
 import Usuarios.Artista;
+import Usuarios.Banda;
 import Usuarios.Fan;
+import Usuarios.Solista;
 import java.awt.Dialog;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -60,25 +62,16 @@ public class Principal extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         CB_Nickname_AdminArtista = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        PF_Password_AdminArtista = new javax.swing.JPasswordField();
-        jLabel9 = new javax.swing.JLabel();
-        TF_Nombre_AdminArtista = new javax.swing.JTextField();
         B_Eliminar_AdminArtista = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-        TF_Genero_AdminArtista = new javax.swing.JTextField();
         B_Cargar_AdminArtista = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        TF_Nombre_AdminFan = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        PF_Password_AdminFan = new javax.swing.JPasswordField();
         jLabel13 = new javax.swing.JLabel();
         CB_Nickname_AdminFan = new javax.swing.JComboBox<>();
         B_Eliminar_AdminFan = new javax.swing.JButton();
         B_Cargar_AdminFan = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         D_MenuArtista = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         D_MenuFan = new javax.swing.JDialog();
         D_Register = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
@@ -94,6 +87,11 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         CB_Usuario_Register = new javax.swing.JComboBox<>();
+        CB_TipoArtista_Register = new javax.swing.JComboBox<>();
+        jLabel15 = new javax.swing.JLabel();
+        TF_Integrantes_Register = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        TF_Edad_Register = new javax.swing.JTextField();
         D_Cargar = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         PB_Cargar = new javax.swing.JProgressBar();
@@ -190,18 +188,12 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel7.setText("Nickname");
 
-        jLabel8.setText("Password");
-
-        jLabel9.setText("Nombre");
-
         B_Eliminar_AdminArtista.setText("Eliminar");
         B_Eliminar_AdminArtista.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 B_Eliminar_AdminArtistaMouseClicked(evt);
             }
         });
-
-        jLabel10.setText("Genero");
 
         B_Cargar_AdminArtista.setText("Cargar");
         B_Cargar_AdminArtista.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -216,22 +208,14 @@ public class Principal extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(43, 43, 43)
+                .addComponent(jLabel7)
+                .addGap(77, 77, 77)
+                .addComponent(CB_Nickname_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(74, 74, 74)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CB_Nickname_AdminArtista, 0, 161, Short.MAX_VALUE)
-                    .addComponent(PF_Password_AdminArtista)
-                    .addComponent(TF_Nombre_AdminArtista)
-                    .addComponent(TF_Genero_AdminArtista))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(B_Eliminar_AdminArtista, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(B_Cargar_AdminArtista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(81, 81, 81))
+                    .addComponent(B_Eliminar_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Cargar_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(163, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,27 +225,12 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(CB_Nickname_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(B_Cargar_AdminArtista))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(PF_Password_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B_Eliminar_AdminArtista))
-                .addGap(48, 48, 48)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel9)
-                    .addComponent(TF_Nombre_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(TF_Genero_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(B_Eliminar_AdminArtista)
+                .addContainerGap(214, Short.MAX_VALUE))
         );
 
         TP_AdministrarUsuario.addTab("Artista", jPanel5);
-
-        jLabel11.setText("Nombre");
-
-        jLabel12.setText("Password");
 
         jLabel13.setText("Nickname");
 
@@ -290,45 +259,27 @@ public class Principal extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(72, 72, 72)
+                .addComponent(jLabel13)
+                .addGap(64, 64, 64)
+                .addComponent(CB_Nickname_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(104, 104, 104)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel11))
-                .addGap(74, 74, 74)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CB_Nickname_AdminFan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PF_Password_AdminFan)
-                    .addComponent(TF_Nombre_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(B_Eliminar_AdminFan, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(B_Cargar_AdminFan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(94, 94, 94))
+                    .addComponent(B_Eliminar_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Cargar_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CB_Nickname_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(B_Cargar_AdminFan)
-                        .addGap(50, 50, 50)))
+                .addGap(61, 61, 61)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel12)
-                    .addComponent(PF_Password_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(B_Eliminar_AdminFan))
-                .addGap(48, 48, 48)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel11)
-                    .addComponent(TF_Nombre_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(141, Short.MAX_VALUE))
+                    .addComponent(CB_Nickname_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13)
+                    .addComponent(B_Cargar_AdminFan))
+                .addGap(60, 60, 60)
+                .addComponent(B_Eliminar_AdminFan)
+                .addContainerGap(195, Short.MAX_VALUE))
         );
 
         TP_AdministrarUsuario.addTab("Fan", jPanel6);
@@ -403,11 +354,17 @@ public class Principal extends javax.swing.JFrame {
         D_MenuArtista.getContentPane().setLayout(D_MenuArtistaLayout);
         D_MenuArtistaLayout.setHorizontalGroup(
             D_MenuArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MenuArtistaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+                .addContainerGap())
         );
         D_MenuArtistaLayout.setVerticalGroup(
             D_MenuArtistaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_MenuArtistaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout D_MenuFanLayout = new javax.swing.GroupLayout(D_MenuFan.getContentPane());
@@ -434,7 +391,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Genero");
+        jLabel6.setText("Genero musical");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -442,33 +399,59 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         CB_Usuario_Register.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artista", "Fan" }));
+        CB_Usuario_Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_Usuario_RegisterActionPerformed(evt);
+            }
+        });
+
+        CB_TipoArtista_Register.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solista", "Banda" }));
+        CB_TipoArtista_Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CB_TipoArtista_RegisterActionPerformed(evt);
+            }
+        });
+
+        jLabel15.setText("Numero de integrantes");
+
+        jLabel16.setText("Edad");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(223, 223, 223)
+                .addComponent(B_Register_Register)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(43, 43, 43)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TF_Nickname_Register)
-                    .addComponent(PF_Password_Register)
-                    .addComponent(TF_Name_Register)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(B_Register_Register)
-                        .addGap(0, 90, Short.MAX_VALUE))
-                    .addComponent(TF_Genero_Register))
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TF_Integrantes_Register))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel16))
+                        .addGap(60, 60, 60)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PF_Password_Register, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TF_Name_Register, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(TF_Genero_Register)
+                            .addComponent(TF_Nickname_Register)
+                            .addComponent(TF_Edad_Register, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CB_Usuario_Register, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(CB_TipoArtista_Register, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CB_Usuario_Register, javax.swing.GroupLayout.Alignment.LEADING, 0, 159, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -479,33 +462,44 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(TF_Nickname_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CB_Usuario_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(PF_Password_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                    .addComponent(PF_Password_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CB_TipoArtista_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(TF_Name_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(TF_Genero_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(TF_Edad_Register, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(TF_Integrantes_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(TF_Genero_Register, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addComponent(B_Register_Register)
-                .addGap(76, 76, 76))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout D_RegisterLayout = new javax.swing.GroupLayout(D_Register.getContentPane());
         D_Register.getContentPane().setLayout(D_RegisterLayout);
         D_RegisterLayout.setHorizontalGroup(
             D_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_RegisterLayout.createSequentialGroup()
+            .addGroup(D_RegisterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         D_RegisterLayout.setVerticalGroup(
             D_RegisterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -665,9 +659,9 @@ public class Principal extends javax.swing.JFrame {
             for (Fan fan : fans) {
                 if (TF_Nickname_LogIn.getText().equals(fan.getNickname())) {
                     if (PF_Password_LogIn.getText().equals(fan.getPassword())) {
+                        D_LogIn.setVisible(false);
                         fanActual = fan;
                         D_MenuFan.pack();
-                        D_MenuFan.setModal(true);
                         D_MenuFan.setVisible(true);
                         pass = true;
                     }
@@ -677,9 +671,9 @@ public class Principal extends javax.swing.JFrame {
             for (Artista artista : artistas) {
                 if (TF_Nickname_LogIn.getText().equals(artista.getNickname())) {
                     if (PF_Password_LogIn.getText().equals(artista.getPassword())) {
+                        D_LogIn.setVisible(false);
                         artistaActual = artista;
                         D_MenuArtista.pack();
-                        D_MenuArtista.setModal(true);
                         D_MenuArtista.setVisible(true);
                         pass = true;
                     }
@@ -704,8 +698,11 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         D_Register.pack();
-        D_Register.setModal(true);
         D_Register.setVisible(true);
+        /*CB_TipoArtista_Register.setVisible(false);
+        TF_Edad_Register.setVisible(false);
+        TF_Genero_Register.setVisible(false);
+        TF_Integrantes_Register.setVisible(false);*/
     }//GEN-LAST:event_B_RegistrarseMouseClicked
 
     private void B_Register_RegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Register_RegisterMouseClicked
@@ -717,9 +714,30 @@ public class Principal extends javax.swing.JFrame {
         String password = PF_Password_Register.getText();
         String name = TF_Name_Register.getText();
         
+        D_Register.setVisible(false);
+        
+        TiempoEspera wait;
+        wait = new TiempoEspera(PB_Cargar,D_Cargar, 5);
+        wait.start();
+        D_Cargar.pack();
+        D_Cargar.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_Cargar.setVisible(true);
+        try {
+            wait.join();
+        } catch (InterruptedException ex) {
+            System.out.println(ex);
+        }
+        
         if (usuario.equals("Artista")) {
             String genero = TF_Genero_Register.getText();
-            artistas.add(new Artista(genero, nickname, password, name));
+            if (CB_TipoArtista_Register.getSelectedItem().equals("Solista")) {
+                int edad = Integer.parseInt(TF_Edad_Register.getText());
+                artistas.add(new Solista(edad, genero, nickname, password, name));
+            } else {
+                int integrantes = Integer.parseInt(TF_Integrantes_Register.getText());
+                artistas.add(new Banda(integrantes, genero, nickname, password, name));
+                
+            }
             guardarArtistas(artistas);
         } else {
             fans.add(new Fan(nickname, password, name));
@@ -727,48 +745,61 @@ public class Principal extends javax.swing.JFrame {
         }
         
         D_LogIn.pack();
-        D_LogIn.setModal(true);
         D_LogIn.setVisible(true);
+        JOptionPane.showMessageDialog(D_LogIn, "Proceso completado");
     }//GEN-LAST:event_B_Register_RegisterMouseClicked
 
-    private void CB_Nickname_AdminArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Nickname_AdminArtistaActionPerformed
+    private void CB_Usuario_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Usuario_RegisterActionPerformed
         // TODO add your handling code here:
-        
-        Artista artista = (Artista) CB_Nickname_AdminArtista.getSelectedItem();
-        if (artista != null) {
-            PF_Password_AdminArtista.setText(artista.getPassword());
-            TF_Nombre_AdminArtista.setText(artista.getName());
-            TF_Genero_AdminArtista.setText(artista.getGenero());
+        /*if (CB_Usuario_Register.getSelectedItem().equals("Artista")) {
+            CB_TipoArtista_Register.setVisible(true);
+            TF_Genero_Register.setVisible(true);
         }
-    }//GEN-LAST:event_CB_Nickname_AdminArtistaActionPerformed
+        else {
+            CB_TipoArtista_Register.setVisible(false);
+            TF_Genero_Register.setVisible(false);
+        }*/
+    }//GEN-LAST:event_CB_Usuario_RegisterActionPerformed
 
-    private void CB_Nickname_AdminFanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Nickname_AdminFanActionPerformed
+    private void CB_TipoArtista_RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_TipoArtista_RegisterActionPerformed
         // TODO add your handling code here:
-        
-        Fan fan = (Fan) CB_Nickname_AdminFan.getSelectedItem();
-        if (fan != null) {
-            PF_Password_AdminFan.setText(fan.getPassword());
-            TF_Nombre_AdminFan.setText(fan.getName());
-        }
-    }//GEN-LAST:event_CB_Nickname_AdminFanActionPerformed
-
-    private void B_Eliminar_AdminArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Eliminar_AdminArtistaMouseClicked
-        // TODO add your handling code here:
-        
-        Artista artista = (Artista) CB_Nickname_AdminArtista.getSelectedItem();
-        if (artista != null) {
-            artistas.remove(artista);
-            guardarArtistas(artistas);
-            CB_Nickname_AdminArtista.removeAllItems();
-            for (Artista a : artistas) {
-                CB_Nickname_AdminArtista.addItem(a);
+       /* if (CB_TipoArtista_Register.isVisible()) {
+            if (CB_TipoArtista_Register.getSelectedItem().equals("Solista")) {
+                TF_Edad_Register.setVisible(true);
+                TF_Integrantes_Register.setVisible(false);
+            } else {
+                TF_Integrantes_Register.setVisible(true);
+                TF_Edad_Register.setVisible(false);
             }
+        }*/
+    }//GEN-LAST:event_CB_TipoArtista_RegisterActionPerformed
+
+    private void B_Cargar_AdminFanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminFanMouseClicked
+        // TODO add your handling code here:
+        D_MenuAdmin.setVisible(false);
+        TiempoEspera wait;
+        wait = new TiempoEspera(PB_Cargar,D_Cargar, 3);
+        System.out.println("objeto creado ");
+        wait.start();
+        D_Cargar.pack();
+        D_Cargar.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_Cargar.setVisible(true);
+        try {
+            wait.join();
+        } catch (InterruptedException ex) {
+            System.out.println(ex);
         }
-    }//GEN-LAST:event_B_Eliminar_AdminArtistaMouseClicked
+        D_MenuAdmin.pack();
+        D_MenuAdmin.setVisible(true);
+        JOptionPane.showMessageDialog(D_MenuAdmin, "Proceso completado");
+        for (Fan f : fans) {
+            CB_Nickname_AdminFan.addItem(f);
+        }
+    }//GEN-LAST:event_B_Cargar_AdminFanMouseClicked
 
     private void B_Eliminar_AdminFanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Eliminar_AdminFanMouseClicked
         // TODO add your handling code here:
-        
+
         Fan fan = (Fan) CB_Nickname_AdminFan.getSelectedItem();
         if (fan != null) {
             fans.remove(fan);
@@ -780,37 +811,23 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_Eliminar_AdminFanMouseClicked
 
+    private void CB_Nickname_AdminFanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Nickname_AdminFanActionPerformed
+        // TODO add your handling code here:
+
+        Fan fan = (Fan) CB_Nickname_AdminFan.getSelectedItem();
+        if (fan != null) {
+            /*PF_Password_AdminFan.setText(fan.getPassword());
+            TF_Nombre_AdminFan.setText(fan.getName());*/
+        }
+    }//GEN-LAST:event_CB_Nickname_AdminFanActionPerformed
+
     private void B_Cargar_AdminArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminArtistaMouseClicked
         // TODO add your handling code here:
         D_MenuAdmin.setVisible(false);
-        D_Cargar.pack();
-        D_Cargar.setVisible(true);
         TiempoEspera wait;
-        wait = new TiempoEspera(PB_Cargar,3);
+        wait = new TiempoEspera(PB_Cargar,D_Cargar,3);
         wait.start();
-        try {
-            wait.join();
-        } catch (InterruptedException ex) {
-            System.out.println(ex);
-        }
-        D_Cargar.setVisible(false);
-        D_MenuAdmin.pack();
-        D_MenuAdmin.setVisible(true);
-        JOptionPane.showMessageDialog(D_MenuAdmin, "Proceso completado");
-        for (Artista a : artistas) {
-            CB_Nickname_AdminArtista.addItem(a);
-        }
-        
-    }//GEN-LAST:event_B_Cargar_AdminArtistaMouseClicked
-
-    private void B_Cargar_AdminFanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminFanMouseClicked
-        // TODO add your handling code here:
-        D_MenuAdmin.setVisible(false);
         D_Cargar.pack();
-        TiempoEspera wait;
-        wait = new TiempoEspera(PB_Cargar, 3);
-        System.out.println("objeto creado ");
-        wait.start();
         D_Cargar.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
         D_Cargar.setVisible(true);
         try {
@@ -818,15 +835,39 @@ public class Principal extends javax.swing.JFrame {
         } catch (InterruptedException ex) {
             System.out.println(ex);
         }
-        D_Cargar.setVisible(false);
         D_MenuAdmin.pack();
         D_MenuAdmin.setVisible(true);
         JOptionPane.showMessageDialog(D_MenuAdmin, "Proceso completado");
-        for (Fan f : fans) {
-            CB_Nickname_AdminFan.addItem(f);
+        for (Artista a : artistas) {
+            CB_Nickname_AdminArtista.addItem(a);
         }
 
-    }//GEN-LAST:event_B_Cargar_AdminFanMouseClicked
+    }//GEN-LAST:event_B_Cargar_AdminArtistaMouseClicked
+
+    private void B_Eliminar_AdminArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Eliminar_AdminArtistaMouseClicked
+        // TODO add your handling code here:
+
+        Artista artista = (Artista) CB_Nickname_AdminArtista.getSelectedItem();
+        if (artista != null) {
+            artistas.remove(artista);
+            guardarArtistas(artistas);
+            CB_Nickname_AdminArtista.removeAllItems();
+            for (Artista a : artistas) {
+                CB_Nickname_AdminArtista.addItem(a);
+            }
+        }
+    }//GEN-LAST:event_B_Eliminar_AdminArtistaMouseClicked
+
+    private void CB_Nickname_AdminArtistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CB_Nickname_AdminArtistaActionPerformed
+        // TODO add your handling code here:
+
+        Artista artista = (Artista) CB_Nickname_AdminArtista.getSelectedItem();
+        if (artista != null) {
+            /*PF_Password_AdminArtista.setText(artista.getPassword());
+            TF_Nombre_AdminArtista.setText(artista.getName());
+            TF_Genero_AdminArtista.setText(artista.getGenero());*/
+        }
+    }//GEN-LAST:event_CB_Nickname_AdminArtistaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -884,6 +925,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton B_Salir;
     private javax.swing.JComboBox<Artista> CB_Nickname_AdminArtista;
     private javax.swing.JComboBox<Fan> CB_Nickname_AdminFan;
+    private javax.swing.JComboBox<String> CB_TipoArtista_Register;
     private javax.swing.JComboBox<String> CB_Usuario_LogIn;
     private javax.swing.JComboBox<String> CB_Usuario_Register;
     private javax.swing.JDialog D_Cargar;
@@ -893,34 +935,28 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog D_MenuFan;
     private javax.swing.JDialog D_Register;
     private javax.swing.JProgressBar PB_Cargar;
-    private javax.swing.JPasswordField PF_Password_AdminArtista;
-    private javax.swing.JPasswordField PF_Password_AdminFan;
     private javax.swing.JPasswordField PF_Password_LogIn;
     private javax.swing.JPasswordField PF_Password_Register;
-    private javax.swing.JTextField TF_Genero_AdminArtista;
+    private javax.swing.JTextField TF_Edad_Register;
     private javax.swing.JTextField TF_Genero_Register;
+    private javax.swing.JTextField TF_Integrantes_Register;
     private javax.swing.JTextField TF_Name_Register;
     private javax.swing.JTextField TF_Nickname_LogIn;
     private javax.swing.JTextField TF_Nickname_Register;
-    private javax.swing.JTextField TF_Nombre_AdminArtista;
-    private javax.swing.JTextField TF_Nombre_AdminFan;
     private javax.swing.JTabbedPane TP_AdministrarUsuario;
     private javax.swing.JTabbedPane TP_MenuAdmin;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -930,6 +966,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
     
@@ -1002,6 +1039,40 @@ public class Principal extends javax.swing.JFrame {
                 ObjectInputStream oi = new ObjectInputStream(fi);) {
             while (true) {
                 fans.add((Fan) oi.readObject());
+                count++;
+                System.out.println(count);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex);
+        } catch (ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+        System.out.println("Registros leidos" + count);
+        return count;
+    }
+    
+    public static int guardarEventos(ArrayList<Evento> eventos) {
+        int count = 0;
+        try (
+                FileOutputStream f = new FileOutputStream("Eventos");
+                ObjectOutput o = new ObjectOutputStream(f);) {
+            for (Evento evento : eventos) {
+                o.writeObject(evento);
+                count++;
+            }
+        } catch (IOException ex) { 
+            System.out.println(ex);
+        }
+        return count;
+    }
+    
+    public static int leerEventos(ArrayList<Evento> eventos) {
+        int count = 0;
+        try (
+                FileInputStream fi = new FileInputStream("Eventos");
+                ObjectInputStream oi = new ObjectInputStream(fi);) {
+            while (true) {
+                eventos.add((Evento) oi.readObject());
                 count++;
                 System.out.println(count);
             }
