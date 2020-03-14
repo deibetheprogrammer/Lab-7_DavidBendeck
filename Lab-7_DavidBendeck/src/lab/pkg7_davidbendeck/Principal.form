@@ -615,7 +615,7 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="Solo se tomar&#xe1;n en cuenta los&#xa;campos que correspodan al &#xa;tipo de usuario y al tipo de &#xa;"/>
+                    <Property name="text" type="java.lang.String" value="Solo se tomar&#xe1;n en cuenta los&#xa;campos que correspodan al &#xa;tipo de usuario y al tipo de &#xa;artista"/>
                   </Properties>
                 </Component>
               </SubComponents>

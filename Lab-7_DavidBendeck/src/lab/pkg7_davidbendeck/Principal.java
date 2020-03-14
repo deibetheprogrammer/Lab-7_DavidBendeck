@@ -395,7 +395,7 @@ public class Principal extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Solo se tomarán en cuenta los\ncampos que correspodan al \ntipo de usuario y al tipo de \n");
+        jTextArea1.setText("Solo se tomarán en cuenta los\ncampos que correspodan al \ntipo de usuario y al tipo de \nartista");
         jScrollPane1.setViewportView(jTextArea1);
 
         CB_Usuario_Register.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Artista", "Fan" }));
