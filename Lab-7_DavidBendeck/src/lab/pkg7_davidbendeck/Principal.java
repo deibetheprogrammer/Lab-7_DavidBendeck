@@ -29,8 +29,6 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         
-        
-        
         initComponents();
     }
 
@@ -278,6 +276,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         B_Cargar_AdminFan.setText("Cargar");
+        B_Cargar_AdminFan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Cargar_AdminFanMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -721,13 +724,6 @@ public class Principal extends javax.swing.JFrame {
             guardarFans(fans);
         }
         
-        for (Artista a : artistas) {
-            CB_Nickname_AdminArtista.addItem(a);
-        }
-        for (Fan f : fans) {
-            CB_Nickname_AdminFan.addItem(f);
-        }
-        
         D_LogIn.pack();
         D_LogIn.setModal(true);
         D_LogIn.setVisible(true);
@@ -758,11 +754,13 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Artista artista = (Artista) CB_Nickname_AdminArtista.getSelectedItem();
-        artistas.remove(artista);
-        guardarArtistas(artistas);
-        CB_Nickname_AdminArtista.removeAllItems();
-        for (Artista a : artistas) {
-            CB_Nickname_AdminArtista.addItem(a);
+        if (artista != null) {
+            artistas.remove(artista);
+            guardarArtistas(artistas);
+            CB_Nickname_AdminArtista.removeAllItems();
+            for (Artista a : artistas) {
+                CB_Nickname_AdminArtista.addItem(a);
+            }
         }
     }//GEN-LAST:event_B_Eliminar_AdminArtistaMouseClicked
 
@@ -770,15 +768,35 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Fan fan = (Fan) CB_Nickname_AdminFan.getSelectedItem();
-        fans.remove(fan);
-        guardarFans(fans);
-        CB_Nickname_AdminFan.removeAllItems();
-        for (Fan f : fans) {
-            CB_Nickname_AdminFan.addItem(f);
+        if (fan != null) {
+            fans.remove(fan);
+            guardarFans(fans);
+            CB_Nickname_AdminFan.removeAllItems();
+            for (Fan f : fans) {
+                CB_Nickname_AdminFan.addItem(f);
+            }
         }
     }//GEN-LAST:event_B_Eliminar_AdminFanMouseClicked
 
     private void B_Cargar_AdminArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminArtistaMouseClicked
+        // TODO add your handling code here:
+        D_Cargar.pack();
+        D_Cargar.setModal(true);
+        D_Cargar.setVisible(true);
+        TiempoEspera wait;
+        wait = new TiempoEspera(PB_Cargar,3);
+        wait.start();
+        if (!wait.isVive()) {
+            JOptionPane.showMessageDialog(D_Cargar, "Proceso completado");
+            D_Cargar.setVisible(false);
+            for (Artista a : artistas) {
+                CB_Nickname_AdminArtista.addItem(a);
+            }
+        }
+        
+    }//GEN-LAST:event_B_Cargar_AdminArtistaMouseClicked
+
+    private void B_Cargar_AdminFanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminFanMouseClicked
         // TODO add your handling code here:
         D_Cargar.pack();
         D_Cargar.setModal(true);
@@ -789,9 +807,11 @@ public class Principal extends javax.swing.JFrame {
         if (!wait.isVive()) {
             JOptionPane.showMessageDialog(D_Cargar, "Proceso completado");
             D_Cargar.setVisible(false);
+            for (Fan f : fans) {
+                CB_Nickname_AdminFan.addItem(f);
+            }
         }
-        
-    }//GEN-LAST:event_B_Cargar_AdminArtistaMouseClicked
+    }//GEN-LAST:event_B_Cargar_AdminFanMouseClicked
 
     /**
      * @param args the command line arguments
