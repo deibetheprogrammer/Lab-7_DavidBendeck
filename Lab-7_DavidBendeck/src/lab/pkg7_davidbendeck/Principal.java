@@ -5,6 +5,7 @@
  */
 package lab.pkg7_davidbendeck;
 
+import Hilos.TiempoEspera;
 import Usuarios.Admin;
 import Usuarios.Artista;
 import Usuarios.Fan;
@@ -27,6 +28,8 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     public Principal() {
+        
+        
         
         initComponents();
     }
@@ -63,6 +66,7 @@ public class Principal extends javax.swing.JFrame {
         B_Eliminar_AdminArtista = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         TF_Genero_AdminArtista = new javax.swing.JTextField();
+        B_Cargar_AdminArtista = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         TF_Nombre_AdminFan = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -71,6 +75,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         CB_Nickname_AdminFan = new javax.swing.JComboBox<>();
         B_Eliminar_AdminFan = new javax.swing.JButton();
+        B_Cargar_AdminFan = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         D_MenuArtista = new javax.swing.JDialog();
         D_MenuFan = new javax.swing.JDialog();
@@ -88,6 +93,10 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         CB_Usuario_Register = new javax.swing.JComboBox<>();
+        D_Cargar = new javax.swing.JDialog();
+        jPanel8 = new javax.swing.JPanel();
+        PB_Cargar = new javax.swing.JProgressBar();
+        jLabel14 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         B_LogIn = new javax.swing.JButton();
         B_Registrarse = new javax.swing.JButton();
@@ -193,6 +202,13 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel10.setText("Genero");
 
+        B_Cargar_AdminArtista.setText("Cargar");
+        B_Cargar_AdminArtista.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                B_Cargar_AdminArtistaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -210,9 +226,11 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(PF_Password_AdminArtista)
                     .addComponent(TF_Nombre_AdminArtista)
                     .addComponent(TF_Genero_AdminArtista))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addComponent(B_Eliminar_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(B_Eliminar_AdminArtista, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                    .addComponent(B_Cargar_AdminArtista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,12 +239,13 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CB_Nickname_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(B_Eliminar_AdminArtista))
-                .addGap(45, 45, 45)
+                    .addComponent(B_Cargar_AdminArtista))
+                .addGap(40, 40, 40)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(PF_Password_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                    .addComponent(PF_Password_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Eliminar_AdminArtista))
+                .addGap(48, 48, 48)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel9)
                     .addComponent(TF_Nombre_AdminArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -258,6 +277,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        B_Cargar_AdminFan.setText("Cargar");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -273,23 +294,31 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(CB_Nickname_AdminFan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(PF_Password_AdminFan)
                     .addComponent(TF_Nombre_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                .addComponent(B_Eliminar_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(B_Eliminar_AdminFan, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                    .addComponent(B_Cargar_AdminFan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(94, 94, 94))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CB_Nickname_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13)
-                    .addComponent(B_Eliminar_AdminFan))
-                .addGap(45, 45, 45)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CB_Nickname_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addGap(43, 43, 43))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(B_Cargar_AdminFan)
+                        .addGap(50, 50, 50)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(PF_Password_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
+                    .addComponent(PF_Password_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B_Eliminar_AdminFan))
+                .addGap(48, 48, 48)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
                     .addComponent(TF_Nombre_AdminFan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -477,6 +506,51 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_RegisterLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        PB_Cargar.setMaximum(3);
+
+        jLabel14.setText("Espere por favor ...");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(173, 173, 173)
+                        .addComponent(jLabel14))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(PB_Cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(110, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(PB_Cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout D_CargarLayout = new javax.swing.GroupLayout(D_Cargar.getContentPane());
+        D_Cargar.getContentPane().setLayout(D_CargarLayout);
+        D_CargarLayout.setHorizontalGroup(
+            D_CargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_CargarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        D_CargarLayout.setVerticalGroup(
+            D_CargarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, D_CargarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -704,6 +778,21 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_B_Eliminar_AdminFanMouseClicked
 
+    private void B_Cargar_AdminArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminArtistaMouseClicked
+        // TODO add your handling code here:
+        D_Cargar.pack();
+        D_Cargar.setModal(true);
+        D_Cargar.setVisible(true);
+        TiempoEspera wait;
+        wait = new TiempoEspera(PB_Cargar, 3);
+        wait.start();
+        if (!wait.isVive()) {
+            JOptionPane.showMessageDialog(D_Cargar, "Proceso completado");
+            D_Cargar.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_B_Cargar_AdminArtistaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -749,6 +838,8 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton B_Cargar_AdminArtista;
+    private javax.swing.JButton B_Cargar_AdminFan;
     private javax.swing.JButton B_Eliminar_AdminArtista;
     private javax.swing.JButton B_Eliminar_AdminFan;
     private javax.swing.JButton B_LogIn;
@@ -760,11 +851,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<Fan> CB_Nickname_AdminFan;
     private javax.swing.JComboBox<String> CB_Usuario_LogIn;
     private javax.swing.JComboBox<String> CB_Usuario_Register;
+    private javax.swing.JDialog D_Cargar;
     private javax.swing.JDialog D_LogIn;
     private javax.swing.JDialog D_MenuAdmin;
     private javax.swing.JDialog D_MenuArtista;
     private javax.swing.JDialog D_MenuFan;
     private javax.swing.JDialog D_Register;
+    private javax.swing.JProgressBar PB_Cargar;
     private javax.swing.JPasswordField PF_Password_AdminArtista;
     private javax.swing.JPasswordField PF_Password_AdminFan;
     private javax.swing.JPasswordField PF_Password_LogIn;
@@ -784,6 +877,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -799,6 +893,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
