@@ -9,6 +9,7 @@ import Hilos.TiempoEspera;
 import Usuarios.Admin;
 import Usuarios.Artista;
 import Usuarios.Fan;
+import java.awt.Dialog;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,6 +17,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutput;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -640,7 +643,6 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         D_LogIn.pack();
-        D_LogIn.setModal(true);
         D_LogIn.setVisible(true);
     }//GEN-LAST:event_B_LogInMouseClicked
 
@@ -653,8 +655,8 @@ public class Principal extends javax.swing.JFrame {
         if (usuario.equals("Administrador")) {
             if (TF_Nickname_LogIn.getText().equals(Leo.getNickname())) {
                 if (PF_Password_LogIn.getText().equals(Leo.getPassword())) {
+                    D_LogIn.setVisible(false);
                     D_MenuAdmin.pack();
-                    D_MenuAdmin.setModal(true);
                     D_MenuAdmin.setVisible(true);
                     pass = true;
                 }
@@ -780,37 +782,50 @@ public class Principal extends javax.swing.JFrame {
 
     private void B_Cargar_AdminArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminArtistaMouseClicked
         // TODO add your handling code here:
+        D_MenuAdmin.setVisible(false);
         D_Cargar.pack();
-        D_Cargar.setModal(true);
         D_Cargar.setVisible(true);
         TiempoEspera wait;
         wait = new TiempoEspera(PB_Cargar,3);
         wait.start();
-        if (!wait.isVive()) {
-            JOptionPane.showMessageDialog(D_Cargar, "Proceso completado");
-            D_Cargar.setVisible(false);
-            for (Artista a : artistas) {
-                CB_Nickname_AdminArtista.addItem(a);
-            }
+        try {
+            wait.join();
+        } catch (InterruptedException ex) {
+            System.out.println(ex);
+        }
+        D_Cargar.setVisible(false);
+        D_MenuAdmin.pack();
+        D_MenuAdmin.setVisible(true);
+        JOptionPane.showMessageDialog(D_MenuAdmin, "Proceso completado");
+        for (Artista a : artistas) {
+            CB_Nickname_AdminArtista.addItem(a);
         }
         
     }//GEN-LAST:event_B_Cargar_AdminArtistaMouseClicked
 
     private void B_Cargar_AdminFanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_B_Cargar_AdminFanMouseClicked
         // TODO add your handling code here:
+        D_MenuAdmin.setVisible(false);
         D_Cargar.pack();
-        D_Cargar.setModal(true);
-        D_Cargar.setVisible(true);
         TiempoEspera wait;
         wait = new TiempoEspera(PB_Cargar, 3);
+        System.out.println("objeto creado ");
         wait.start();
-        if (!wait.isVive()) {
-            JOptionPane.showMessageDialog(D_Cargar, "Proceso completado");
-            D_Cargar.setVisible(false);
-            for (Fan f : fans) {
-                CB_Nickname_AdminFan.addItem(f);
-            }
+        D_Cargar.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        D_Cargar.setVisible(true);
+        try {
+            wait.join();
+        } catch (InterruptedException ex) {
+            System.out.println(ex);
         }
+        D_Cargar.setVisible(false);
+        D_MenuAdmin.pack();
+        D_MenuAdmin.setVisible(true);
+        JOptionPane.showMessageDialog(D_MenuAdmin, "Proceso completado");
+        for (Fan f : fans) {
+            CB_Nickname_AdminFan.addItem(f);
+        }
+
     }//GEN-LAST:event_B_Cargar_AdminFanMouseClicked
 
     /**
@@ -927,6 +942,7 @@ public class Principal extends javax.swing.JFrame {
     //Listas de Usuarios
     public static ArrayList<Artista> artistas = new ArrayList<>();
     public static ArrayList<Fan> fans = new ArrayList<>();
+    public static ArrayList<Evento> eventos = new ArrayList<>();
     
     //Metodos de guardado
     

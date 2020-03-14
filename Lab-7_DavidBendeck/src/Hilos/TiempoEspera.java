@@ -20,6 +20,7 @@ public class TiempoEspera extends Thread {
     
     public TiempoEspera(JProgressBar barra, int tiempo) {
         this.barra = barra;
+        barra.setMaximum(tiempo);
         this.tiempo = tiempo;
         avanzar = true;
         vive = true;
@@ -51,9 +52,12 @@ public class TiempoEspera extends Thread {
     
     @Override
     public void run() {
+        
         while(vive) {
             if (avanzar) {
                 barra.setValue(barra.getValue() + 1);
+                //System.out.println(barra.getValue());
+                //System.out.println(tiempo);
                 if (barra.getValue() >= tiempo) {
                     vive = false;
                 }
